@@ -1,0 +1,87 @@
+$colorBorder: #e2e7eb !default;
+
+@mixin ellipsis() {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+@mixin clearfix() {
+  &:after {
+    content: '';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+.border {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0;
+  z-index: 1;
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+}
+@mixin borderTopBefore($borderColor: $colorBorder) {
+  &:before {
+    @extend .border;
+    border-top: 1px solid $borderColor;
+    top: 0;
+  }
+}
+@mixin borderTopBeforeGreen($borderColor: $colorGreen) {
+  &:before {
+    @extend .border;
+    border-top: 1px solid $borderColor;
+    top: 0;
+  }
+}
+@mixin borderTopAfter($borderColor: $colorBorder) {
+  &:after {
+    @extend .border;
+    border-top: 1px solid $borderColor;
+    top: 0;
+  }
+}
+@mixin borderBottomBefore($borderColor: $colorBorder) {
+  &:before {
+    @extend .border;
+    border-bottom: 1px solid $borderColor;
+    bottom: 0;
+  }
+}
+@mixin borderBottomAfter($borderColor: $colorBorder) {
+  &:after {
+    @extend .border;
+    border-bottom: 1px solid $borderColor;
+    bottom: 0;
+  }
+}
+
+.borderVertical {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 0;
+  z-index: 1;
+  transform-origin: 0 0;
+  transform: scaleX(0.5);
+}
+@mixin borderLeftBefore($borderColor: $colorBorder) {
+  &:before {
+    @extend .borderVertical;
+    right: 100%;
+    border-left: 1px solid $borderColor;
+  }
+}
+@mixin borderRightAfter($borderColor: $colorBorder) {
+  &:after {
+    @extend .borderVertical;
+    left: 100%;
+    border-right: 1px solid $borderColor;
+  }
+}
